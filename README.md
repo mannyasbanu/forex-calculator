@@ -1,2 +1,17 @@
-# forex-calculator
-A simple web app for computing basic FOREX calculations including pip and position sizing.
+# 💱 forex-calculator
+A simple web app to automate basic forex calculations including pip and position sizing.
+
+## 🚀 Live Demo
+🔗 [Coming Soon]()
+
+---
+
+## 📋 Features
+- Pip Value Calculator
+- Position Size Calculator
+- Live exchange rate integration
+
+---
+
+## 🧭 Planning
+See full [Planning Document](#planning-document) here.
