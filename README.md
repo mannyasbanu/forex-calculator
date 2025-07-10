@@ -14,4 +14,4 @@ A simple web app to automate basic forex calculations including pip and position
 ---
 
 ## 🧭 Planning
-See full [Planning Document](#planning-document) here.
+See full [planning-document](https://github.com/mannyasbanu/forex-calculator/blob/main/planning.md) here.
