@@ -1,67 +1,240 @@
 <template>
-  <header>
-    <div id="logo-container" class="logo">
-      <img src="../assets/candlesticks.png" alt="">
-      <h1>Forex Calculator</h1>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm">
+    <div class="container">
+      <!-- Brand/Logo -->
+      <router-link to="/" class="navbar-brand d-flex align-items-center">
+        <img 
+          src="../assets/candlesticks.png" 
+          alt="Forex Calculator Logo" 
+          height="40" 
+          class="me-2"
+        >
+        <span class="brand-text fw-bold">Forex Calculator</span>
+      </router-link>
+
+      <!-- Mobile menu toggle button -->
+      <button 
+        class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarNav" 
+        aria-controls="navbarNav" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <router-link 
+              to="/" 
+              class="nav-link" 
+              active-class="active"
+              exact-active-class="active"
+            >
+              <i class="fas fa-home me-1"></i>
+              Home
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link 
+              to="/pip-calc" 
+              class="nav-link"
+              active-class="active"
+            >
+              <i class="fas fa-calculator me-1"></i>
+              Pip Value Calculator
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link 
+              to="/position-calc" 
+              class="nav-link"
+              active-class="active"
+            >
+              <i class="fas fa-chart-line me-1"></i>
+              Position Size Calculator
+            </router-link>
+          </li>
+        </ul>
+
+        <!-- Right side items -->
+        <div class="navbar-nav">
+          <div class="nav-item dropdown">
+            <a 
+              class="nav-link dropdown-toggle" 
+              href="#" 
+              id="navbarDropdown" 
+              role="button" 
+              data-bs-toggle="dropdown" 
+              aria-expanded="false"
+            >
+              <i class="fas fa-cog me-1"></i>
+              Settings
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-palette me-1"></i>
+                  Theme
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-globe me-1"></i>
+                  Language
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-info-circle me-1"></i>
+                  About
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="nav-bar-container">
-      <div>Pip Value Calculator</div>
-      <div>Position Size Calculator</div>
-    </div>
-    <div id="settings">
-      <div>Settings</div>
-    </div>
-  </header>
+  </nav>
 </template>
 
-<script></script>
+<script>
+import { onMounted } from 'vue'
 
-<style>
-  header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 100px;
-    flex-shrink: 0;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #ddd;
-    padding: 0 20px 0 20px;
+export default {
+  name: 'HeaderBar',
+  setup() {
+    // Initialize Bootstrap JavaScript components when component mounts
+    onMounted(() => {
+      // Import Bootstrap JS dynamically if needed
+      if (typeof window !== 'undefined' && window.bootstrap) {
+        // Bootstrap is already available globally
+      }
+    })
+
+    return {}
   }
-  #logo-container{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+}
+</script>
+
+<style scoped>
+/* Custom navbar styling */
+.navbar {
+  min-height: 70px;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.brand-text {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover .brand-text {
+  color: #3498db;
+}
+
+/* Navigation links styling */
+.nav-link {
+  font-weight: 500;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.375rem;
+  margin: 0 0.25rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  background-color: #f8f9fa;
+  color: #3498db !important;
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  background-color: #3498db !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background-color: #2980b9;
+  border-radius: 1px;
+}
+
+/* Dropdown styling */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.dropdown-item {
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #3498db;
+  color: white;
+  transform: translateX(2px);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: white;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   }
-  #logo-container img{
-    height: 50px;
+  
+  .nav-link {
+    margin: 0.25rem 0;
   }
-  #logo-container h1{
-    font-size: 1.5rem;
-    margin: 0;
+  
+  .navbar-nav {
+    text-align: center;
   }
-  #nav-bar-container{
-    display: flex;
-    gap: 50px;
-    align-items: center;
-  }
-  #logo-container, #nav-bar-container div, #settings div{
-    cursor: pointer;
-    font-weight: bold;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  #logo-container:hover, #nav-bar-container div:hover, #settings div:hover{
-    filter: drop-shadow(0 0 2em #7a7a7a);
-  }
-  #settings{
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-  }
-  .logo{
-    font-family: "Special Gothic Expanded One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+}
+
+/* Logo hover effect */
+.navbar-brand img {
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Add subtle shadow when scrolled */
+.navbar.scrolled {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon spacing */
+.fas {
+  width: 16px;
+  text-align: center;
+}
 </style>

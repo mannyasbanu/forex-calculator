@@ -1,28 +1,32 @@
 <script setup>
 import HeaderBar from './components/HeaderBar.vue'
 import FooterBar from './components/FooterBar.vue'
-import MyForm from './components/MyForm.vue'
-import Home from './views/Home.vue'
 </script>
 
 <template>
-  <div>
+  <div id="app">
     <HeaderBar />
-    <Home />
+    <main>
+      <router-view />
+    </main>
+    <FooterBar />
   </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+main {
+  flex: 1;
+  min-height: calc(100vh - 140px); /* Adjust based on header/footer height */
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+/* Global app styling */
+body {
+  font-family: 'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 </style>
